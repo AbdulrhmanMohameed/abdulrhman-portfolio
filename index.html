@@ -109,7 +109,15 @@
   html[dir="ltr"] .hero-sub-end { text-align: right; }
   html[dir="ltr"] .hero-sub-start { text-align: left; }
   .hero-sub a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
-  @media (max-width: 640px) { .hero { padding-top: 130px; padding-bottom: 30px; } .hero-name-wrap { transform: translateY(-5vh); } .hero-avatar { width: 140px; height: 140px; transform: translate(-50%, calc(-50% + 70px));} .book-call-wrap { transform: translate(-50%, calc(-50% + 200px)); } .hero-sub { max-width: 100%; } .hero-sub-row { justify-content: flex-start; gap: 14px; } }
+  @media (max-width: 640px) {
+    .hero { padding-top: 110px; padding-bottom: 28px; justify-content: flex-start; }
+    /* إلغاء التمركز المطلق — ترتيب عمودي طبيعي */
+    .hero-name-wrap { position: static; transform: none; perspective: none; order: 0; }
+    .hero-avatar { position: static; transform: none; width: 132px; height: 132px; margin: 20px auto 0; order: 1; }
+    .book-call-wrap { position: static; transform: none; margin: 18px auto 0; order: 2; }
+    .hero-sub-row { order: 3; margin-top: auto; justify-content: flex-start; gap: 14px; }
+    .hero-sub { max-width: 100%; }
+  }
 
   /* ═══════════ CUSTOM CURSOR ═══════════ */
   @media (hover: hover) and (pointer: fine) { body, a, button { cursor: none; } }
