@@ -2,11 +2,13 @@
 <html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Abdulrahman Mohamed | Portfolio</title>
+<meta name="description" content="Abdulrahman Mohamed — WordPress Developer & AI Automation Specialist. Fast websites and smart n8n automations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/PORTFOLIO.png?raw=true">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -72,6 +74,7 @@
   .preloader-text .word { opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
   .preloader-text .word.show { opacity: 1; transform: translateY(0); }
   @media (prefers-reduced-motion: reduce) { .preloader-text .word, #preloader { transition: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .hero-grain, .marquee-track { animation: none !important; } }
 
   /* ═══════════ HERO ═══════════ */
   .hero-container { position: fixed; top: 0; left: 0; right: 0; height: 100vh; z-index: 1; background: var(--bg); }
@@ -247,7 +250,7 @@
   .about-btn-wrap:hover { z-index: 100000; }
   .content-layer .book-call-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 0 32px !important; height: 52px !important; border-radius: 6px !important; border: 1px solid rgba(255,255,255,0.4) !important; background: #000 !important; color: #fff !important; font-family: 'Inter', 'Tajawal', sans-serif !important; font-size: 14px !important; font-weight: 600 !important; letter-spacing: 0.05em !important; text-transform: uppercase !important; text-decoration: none !important; cursor: none !important; white-space: nowrap !important; outline: none !important; box-shadow: none !important; transition: transform 0.3s cubic-bezier(.25,.46,.45,.94) !important; }
   .content-layer .book-call-btn:hover { border-color: transparent !important; background: transparent !important; }
-  .proj-modal { position: fixed; inset: 0; z-index: 90000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; padding: 20px; cursor: none !important; }
+  .proj-modal { position: fixed; inset: 0; z-index: 90000; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; padding: 20px; cursor: none !important; }
   .proj-modal.active { opacity: 1; pointer-events: auto; }
   .modal-content { background: var(--card, #111); border: 1px solid var(--border, rgba(255,255,255,0.1)); width: 100%; max-width: 900px; border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; transform: translateY(40px); transition: transform 0.4s cubic-bezier(.25,.46,.45,.94); position: relative; max-height: 90vh; }
   @media (min-width: 768px) { .modal-content { flex-direction: row; } }
@@ -282,7 +285,7 @@
   .tst-info{display:flex;flex-direction:column;align-items:center;gap:2px}
   .tst-info strong{font-size:16px;font-weight:700;line-height:1.3}
   .tst-info small{font-size:13px;color:#807f7c}
-  .tst-arrow{ position:absolute; top:50%; transform:translateY(-50%); z-index:5; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(255,255,255,.08); color:#F5F4F0; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:.25s; backdrop-filter:blur(6px); }
+  .tst-arrow{ position:absolute; top:50%; transform:translateY(-50%); z-index:5; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(255,255,255,.08); color:#F5F4F0; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:.25s; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
   .tst-arrow:hover{ background:#14b8a6; border-color:#14b8a6; color:#0a0a0a; }
   .tst-arrow svg{ width:20px; height:20px; }
   .tst-arrow.prev{ inset-inline-start:0; }
@@ -344,6 +347,7 @@
   .contact-expand-btn:hover span.label { opacity: 1; width: auto; padding-inline-end: 20px; color: #fff; }
 </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 
 <body class="locked">
@@ -388,7 +392,6 @@
 <div class="hero-container" id="home">
   <section class="hero" id="hero">
     <div class="hero-grain"></div>
-    <div class="hero-vignette"></div>
     <div class="hero-noise"></div>
     <div class="hero-name-wrap">
       <h1>
@@ -397,7 +400,7 @@
       </h1>
     </div>
     <a href="https://wa.me/201063149036" target="_blank" class="hero-avatar" id="heroAvatar" data-view data-cursor="I'm open to work — DM me or book a call">
-      <img src="https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/PORTFOLIO.png?raw=true" alt="Profile" id="avatarImg" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='block';">
+      <img src="https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/PORTFOLIO.png?raw=true" alt="Profile" id="avatarImg" decoding="async" fetchpriority="high" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='block';">
       <i class="fa-solid fa-user" id="avatarFallback" style="display:none;"></i>
     </a>
     <div class="book-call-wrap">
@@ -437,7 +440,7 @@
               </svg>
               <div id="ropeCard">
                   <div class="profile-widget" id="profileWidget">
-                    <img id="profileImg" src="https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/PORTFOLIO.png?raw=true" alt="Profile" loading="lazy" onerror="this.remove()">
+                    <img id="profileImg" decoding="async" src="https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/PORTFOLIO.png?raw=true" alt="Profile" loading="lazy" onerror="this.remove()">
                     <span id="aw_profile_widget">Abdulrahman<br>Web & AI Automation</span>
                   </div>
               </div>
@@ -543,7 +546,7 @@ My goal is to build sites that are not just visually appealing, but also fast, s
 <div class="proj-modal" id="projModal">
     <div class="modal-content">
         <div class="modal-close" id="modalClose">✕</div>
-        <div class="modal-img"><img id="modalImg" src="" alt="Project Image"></div>
+        <div class="modal-img"><img id="modalImg" src="" alt="Project Image" decoding="async"></div>
         <div class="modal-body">
             <div>
                 <div class="modal-badge" id="modalCat">Category</div>
@@ -600,20 +603,28 @@ My goal is to build sites that are not just visually appealing, but also fast, s
     const hero = document.getElementById('hero');
     const body = document.body;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { preloader.style.display = 'none'; hero.classList.add('revealed'); body.classList.remove('locked'); return; }
-    let t = 200;
-    words.forEach((w, i) => { setTimeout(() => w.classList.add('show'), t + i * 200); });
-    t += words.length * 200 + 400; 
+    let t = 60;
+    words.forEach((w, i) => { setTimeout(() => w.classList.add('show'), t + i * 120); });
+    t += words.length * 120 + 250; 
     setTimeout(() => { preloader.classList.add('slide-down'); hero.classList.add('revealed'); body.classList.remove('locked'); }, t);
     setTimeout(() => { preloader.style.display = 'none'; }, t + 600);
   }
   window.addEventListener('load', runIntro);
 
   const heroSection = document.getElementById('hero');
+  let heroTick = false;
   window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY; const fadePoint = window.innerHeight * 0.85; 
-      let opacity = 1 - (scrollY / fadePoint); let blur = (scrollY / fadePoint) * 12; 
-      if (opacity < 0) opacity = 0; if (opacity > 1) opacity = 1; if (blur > 12) blur = 12;
-      if (heroSection) { heroSection.style.opacity = opacity; heroSection.style.filter = `blur(${blur}px)`; }
+      const scrollY = window.scrollY;
+      if (scrollY > window.innerHeight) { if (heroSection.style.opacity !== '0') heroSection.style.opacity = '0'; return; }
+      if (heroTick) return; heroTick = true;
+      requestAnimationFrame(() => { heroTick = false;
+          const fadePoint = window.innerHeight * 0.85;
+          const p = scrollY / fadePoint;
+          let opacity = 1 - p; if (opacity < 0) opacity = 0;
+          const blur = Math.min(p, 1) * 6;
+          heroSection.style.opacity = opacity;
+          heroSection.style.filter = blur > 0.4 ? `blur(${blur}px)` : 'none';
+      });
   }, { passive: true });
 
   (function () {
@@ -656,7 +667,7 @@ My goal is to build sites that are not just visually appealing, but also fast, s
     const marqueePhrases = { en: ['WORDPRESS EXPERT', 'N8N AUTOMATION', 'CUSTOM WEB DESIGN', 'SMART WORKFLOWS', 'API INTEGRATION', 'FAST PERFORMANCE'], ar: ['خبير ووردبريس', 'أتمتة n8n', 'تصميم مواقع', 'سير عمل ذكي', 'ربط APIs', 'أداء عالي وسريع'] };
     function updateMarquees() {
       const isAr = document.documentElement.lang.startsWith('ar') || document.documentElement.dir === 'rtl';
-      const phrases = marqueePhrases[isAr ? 'ar' : 'en']; const repeated = [...phrases, ...phrases, ...phrases, ...phrases];
+      const phrases = marqueePhrases[isAr ? 'ar' : 'en']; const repeated = [...phrases, ...phrases];
       let html = ''; repeated.forEach((text, i) => { html += `<span class="marquee-item">${text}</span>`; if (i < repeated.length - 1) { html += `<span class="marquee-sep"></span>`; } });
       document.querySelectorAll('[data-marquee-track]').forEach(track => { if (track.innerHTML !== html) { track.innerHTML = html; } });
     }
@@ -748,7 +759,7 @@ My goal is to build sites that are not just visually appealing, but also fast, s
       const itemsToShow = isExpanded ? projectsData : projectsData.slice(0, 5);
       el.innerHTML = itemsToShow.map((p, i) => {
         const data = p[currentLang];
-        return `<article class="proj-card" data-id="${p.id}" style="--tc1:${p.c1};--tc2:${p.c2}"><div class="bgimg"><img data-idx="${i}" src="${p.img}" alt="${data.title}" loading="lazy"></div><div class="fallback" id="fallback-${i}"><div class="fic">${p.ic}</div><span>${data.title}</span></div><div class="play"><span>+</span></div><div class="meta-top"><span>${data.cat}</span><span>${data.year}</span></div><h3 class="ptitle disp">${data.title}</h3><span class="dur">● ${data.tech.split('/')[0].trim()}</span></article>`
+        return `<article class="proj-card" data-id="${p.id}" style="--tc1:${p.c1};--tc2:${p.c2}"><div class="bgimg"><img data-idx="${i}" src="${p.img}" alt="${data.title}" loading="lazy" decoding="async"></div><div class="fallback" id="fallback-${i}"><div class="fic">${p.ic}</div><span>${data.title}</span></div><div class="play"><span>+</span></div><div class="meta-top"><span>${data.cat}</span><span>${data.year}</span></div><h3 class="ptitle disp">${data.title}</h3><span class="dur">● ${data.tech.split('/')[0].trim()}</span></article>`
       }).join('');
       el.querySelectorAll('img[data-idx]').forEach(img => { const idx = img.getAttribute('data-idx'); img.addEventListener('load', () => img.classList.add('loaded')); img.addEventListener('error', () => { img.style.display = 'none'; const fb = document.getElementById('fallback-' + idx); if (fb) fb.classList.add('show'); }); if (img.complete && img.naturalWidth > 0) img.classList.add('loaded'); });
       el.querySelectorAll('.proj-card').forEach(card => { card.addEventListener('click', () => openModal(card.getAttribute('data-id'))); });
@@ -778,7 +789,8 @@ My goal is to build sites that are not just visually appealing, but also fast, s
     function initHorizontalScroll() {
       wrapper = document.getElementById('projects'); sticky = document.getElementById('projects-sticky'); track = document.getElementById('projects-track');
       if (!wrapper || !sticky || !track) return;
-      updateProjHeight(); window.addEventListener('resize', updateProjHeight); window.addEventListener('load', updateProjHeight);
+      updateProjHeight(); window.addEventListener('load', updateProjHeight);
+      window.addEventListener('resize', () => { updateProjHeight(); onScroll(); });
       function onScroll() {
           if (window.innerWidth < 900) return;
           const wrapRect = wrapper.getBoundingClientRect(); const viewportH = window.innerHeight; const wrapperHeight = wrapper.offsetHeight;
@@ -787,11 +799,14 @@ My goal is to build sites that are not just visually appealing, but also fast, s
           else { sticky.classList.add('is-fixed'); sticky.classList.remove('is-abs-bottom'); sticky.style.position = 'fixed'; sticky.style.top = '0'; sticky.style.left = '0'; sticky.style.width = '100%'; }
           let scrollProgress = -wrapRect.top; const maxScroll = wrapperHeight - viewportH; if (scrollProgress < 0) scrollProgress = 0; if (scrollProgress > maxScroll) scrollProgress = maxScroll; targetProjX = scrollProgress;
       }
-      window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll); onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
       if (!rafStarted) { rafStarted = true; renderProjLoop(); }
     }
     function renderProjLoop() {
-      if (track && window.innerWidth >= 900) { currentProjX += (targetProjX - currentProjX) * 0.08; const isRTL = document.documentElement.dir === 'rtl'; const dir = isRTL ? 1 : -1; track.style.transform = `translate3d(${dir * currentProjX}px, 0, 0)`; }
+      if (track && window.innerWidth >= 900) {
+          const diff = targetProjX - currentProjX;
+          if (Math.abs(diff) > 0.1) { currentProjX += diff * 0.08; const dir = document.documentElement.dir === 'rtl' ? 1 : -1; track.style.transform = `translate3d(${dir * currentProjX}px, 0, 0)`; }
+      }
       requestAnimationFrame(renderProjLoop);
     }
   })();
