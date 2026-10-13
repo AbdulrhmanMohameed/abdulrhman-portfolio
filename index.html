@@ -403,8 +403,8 @@
     <div class="hero-noise"></div>
     <div class="hero-name-wrap">
       <h1>
-        <span class="hero-line"><span id="heroNameLine1">ABDULRAHMAN</span></span>
-        <span class="hero-line"><span id="heroNameLine2">MOHAMED</span></span>
+        <span class="hero-line"><span id="heroNameLine1">WORDPRESS</span></span>
+        <span class="hero-line"><span id="heroNameLine2">DEVLOPER</span></span>
       </h1>
     </div>
     <a href="https://wa.me/201063149036" target="_blank" class="hero-avatar" id="heroAvatar" data-view data-cursor="I'm open to work — DM me or book a call">
@@ -581,8 +581,8 @@ My goal is to build sites that are not just visually appealing, but also fast, s
   let currentLang = 'en';
 
   const heroText = {
-    ar: { name1: 'عبدالرحمن', name2: 'مــــحــــمــــد', subStart: 'بشتغل حاليًا في <strong>تصميم مواقع ووردبريس</strong> وأتمتة سير العمل باستخدام <strong>n8n</strong>، ومتاح للعمل حاليًا.', subEnd: 'مركّز على بناء مواقع سريعة وأتمتة ذكية توفّر الوقت، بشتغل فريلانس عن بُعد.', avatarCursor: 'متاح للعمل — راسلني أو احجز مكالمة', bookCall: 'احجز مكالمة' },
-    en: { name1: 'ABDULRAHMAN', name2: 'MOHAMED', subStart: 'Currently building <strong>WordPress websites</strong> and automating workflows with <strong>n8n</strong>, available for freelance work.', subEnd: 'Focused on fast websites and smart automations that save time, working remotely as a freelancer.', avatarCursor: "I'm open to work — DM me or book a call", bookCall: 'BOOK A CALL' }
+    ar: { name1: 'مطور', name2: 'وردبريس', subStart: 'بشتغل حاليًا في <strong>تصميم مواقع ووردبريس</strong> وأتمتة سير العمل باستخدام <strong>n8n</strong>، ومتاح للعمل حاليًا.', subEnd: 'مركّز على بناء مواقع سريعة وأتمتة ذكية توفّر الوقت، بشتغل فريلانس عن بُعد.', avatarCursor: 'متاح للعمل — راسلني أو احجز مكالمة', bookCall: 'احجز مكالمة' },
+    en: { name1: 'WORDPRESS', name2: 'DEVLOPER', subStart: 'Currently building <strong>WordPress websites</strong> and automating workflows with <strong>n8n</strong>, available for freelance work.', subEnd: 'Focused on fast websites and smart automations that save time, working remotely as a freelancer.', avatarCursor: "I'm open to work — DM me or book a call", bookCall: 'BOOK A CALL' }
   };
 
   langBtn.addEventListener('click', () => {
@@ -597,10 +597,10 @@ My goal is to build sites that are not just visually appealing, but also fast, s
     document.getElementById('heroAvatar').setAttribute('data-cursor', t.avatarCursor);
     bookCallText.textContent = t.bookCall;
     if(currentLang === 'en') {
-      langIcon.textContent = 'AR'; langLabel.textContent = 'عربي'; logoText.textContent = 'A. MOHAMED';
+      langIcon.textContent = 'AR'; langLabel.textContent = 'عربي'; logoText.textContent = 'ABULRHMAN. MOHAMED';
       document.querySelector('[data-i18n="nav_home"]').textContent = 'Home'; document.querySelector('[data-i18n="nav_about"]').textContent = 'About'; document.querySelector('[data-i18n="nav_stack"]').textContent = 'Stack'; document.querySelector('[data-i18n="nav_projects"]').textContent = 'Projects'; document.querySelector('[data-i18n="nav_contact"]').textContent = 'Contact';
     } else {
-      langIcon.textContent = 'EN'; langLabel.textContent = 'English'; logoText.textContent = 'عبدالرحمن م.';
+      langIcon.textContent = 'EN'; langLabel.textContent = 'English'; logoText.textContent = 'عبدالرحمن محمد.';
       document.querySelector('[data-i18n="nav_home"]').textContent = 'الرئيسية'; document.querySelector('[data-i18n="nav_about"]').textContent = 'نبذة'; document.querySelector('[data-i18n="nav_stack"]').textContent = 'التقنيات'; document.querySelector('[data-i18n="nav_projects"]').textContent = 'الأعمال'; document.querySelector('[data-i18n="nav_contact"]').textContent = 'تواصل';
     }
   });
