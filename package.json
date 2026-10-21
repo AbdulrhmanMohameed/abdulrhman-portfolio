@@ -1,0 +1,10 @@
+{
+  "name": "abdulrhman-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "engines": { "node": ">=22" }
+}

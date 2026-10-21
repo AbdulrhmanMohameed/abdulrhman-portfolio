@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/PORTFOLIO.png?raw=true">
+<link rel="preload" as="image" href="assets/profile.webp">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -21,7 +21,7 @@
     --grain-glow: rgba(255,255,255,.16);
   }
   * { box-sizing: border-box; }
-  html, body { overflow-x: hidden; }
+  html, body { overflow-x: clip; }
   body {
     background: var(--bg); color: var(--fg);
     font-family: 'Tajawal', sans-serif;
@@ -78,10 +78,10 @@
 
   /* ═══════════ HERO ═══════════ */
   .hero-container { position: fixed; top: 0; left: 0; right: 0; height: 100vh; z-index: 1; background: var(--bg); }
-  .hero { position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 150px clamp(20px, 4vw, 64px) 46px; background: #060606; will-change: opacity, filter; }
-  .hero-grain { position: absolute; inset: -20%; z-index: 0; filter: blur(45px); opacity: 1; background: repeating-linear-gradient(115deg, var(--grain-glow) 0px, var(--grain-glow) 60px, transparent 60px, transparent 190px); animation: waveShift 30s linear infinite; }
+  .hero { position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 150px clamp(20px, 4vw, 64px) 46px; background: #060606; will-change: opacity; }
+  .hero-grain { position: absolute; inset: -20%; z-index: 0; filter: blur(45px); opacity: 1; background: repeating-linear-gradient(115deg, var(--grain-glow) 0px, var(--grain-glow) 60px, transparent 60px, transparent 190px); animation: waveShift 20s ease-in-out infinite alternate; }
   .hero-grain::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, transparent 0%, var(--bg) 78%); }
-  @keyframes waveShift { 0% { background-position: 0 0; } 100% { background-position: 600px -400px; } }
+  @keyframes waveShift { from { transform: translate3d(-3%, -2%, 0); } to { transform: translate3d(3%, 2%, 0); } }
   .hero-noise { position: absolute; inset: 0; z-index: 1; opacity: .05; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
   .hero-name-wrap { position: absolute; inset: 0; z-index: 6; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; pointer-events: none; perspective: 1200px; transform: translateY(-8vh); }
   .hero-name-wrap h1 { margin: 0; }
@@ -165,8 +165,8 @@
   #about .title { font-size: clamp(44px, 7vw, 100px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; text-transform: uppercase; color: var(--fg); white-space: nowrap; margin: 0; padding: 0; }
   html[dir="rtl"] #about .title, body.rtl #about .title { text-transform: none; letter-spacing: 0; }
   #about .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; letter-spacing: 1px; }
-  #about .reveal { opacity: 0; filter: blur(12px); transform: translateY(30px); transition: opacity 0.9s var(--ease), filter 0.9s var(--ease), transform 0.9s var(--ease); }
-  #about .reveal.in { opacity: 1; filter: blur(0); transform: translateY(0); }
+  #about .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  #about .reveal.in { opacity: 1; transform: translateY(0); }
   .about-grid { display: flex; flex-direction: column; gap: 56px; }
   @media (min-width: 1100px) { .about-grid { flex-direction: row; gap: 110px; } }
   .about-left { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
@@ -222,9 +222,7 @@
 <!-- ═══════════ PROJECTS STYLES ═══════════ -->
 <style>
   #projects { position: relative; width: 100%; background: var(--bg, #0a0a0a); z-index: 10; cursor: none !important; }
-  #projects-sticky { position: relative; height: 100vh; width: 100%; overflow: hidden; display: flex; align-items: center; background: var(--bg, #0a0a0a); top: 0; left: 0; }
-  #projects-sticky.is-fixed{ position: fixed; }
-  #projects-sticky.is-abs-bottom{ position: absolute; bottom: 0; top:auto; }
+  #projects-sticky { position: sticky; height: 100vh; width: 100%; overflow: hidden; display: flex; align-items: center; background: var(--bg, #0a0a0a); top: 0; left: 0; }
   #projects-track { display: flex; align-items: center; gap: 24px; will-change: transform; padding: 0 clamp(20px,4vw,64px); width: max-content; }
   #projCards { display: flex; align-items: center; gap: 24px; }
   .proj-lead { width: max-content; flex-shrink:0; padding-inline-end: 6vw; }
@@ -326,8 +324,8 @@
   #contact .wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 64px); }
   #contact .title { font-family: 'Inter', 'Tajawal', sans-serif; font-size: clamp(44px, 7vw, 100px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; text-transform: uppercase; color: var(--fg); white-space: nowrap; margin: 0; }
   html[dir="rtl"] #contact .title, body.rtl #contact .title { text-transform: none; letter-spacing: 0; }
-  #contact .reveal { opacity: 0; filter: blur(12px); transform: translateY(30px); transition: opacity 0.9s var(--ease), filter 0.9s var(--ease), transform 0.9s var(--ease); }
-  #contact .reveal.in { opacity: 1; filter: blur(0); transform: translateY(0); }
+  #contact .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  #contact .reveal.in { opacity: 1; transform: translateY(0); }
   .contact-head { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 70px; }
   .contact-head p { font-style: italic; font-weight: 500; color: var(--fg-dim); max-width: 520px; margin-top: 6px; font-size: 16px; }
   .contact-rows { max-width: 900px; margin: 0 auto 60px; border-top: 1px solid var(--border); }
@@ -357,6 +355,37 @@
 </style>
 <base target="_blank">
 <base target="_blank">
+
+<style>
+  .hero.offscreen .hero-grain, .marquee-widget.motion-paused .marquee-track { animation-play-state: paused; }
+  body.modal-open { overflow: hidden; }
+  html { scrollbar-gutter: stable; }
+  .proj-card:focus-visible, .modal-close:focus-visible, .modal-live-link:focus-visible { outline: 2px solid #00d2ff; outline-offset: 5px; }
+  .proj-card[data-id="summvia"] .bgimg img.loaded { opacity: .9; filter: none; }
+  .proj-card[data-id="summvia"] .ptitle { font-family: 'Inter', sans-serif; font-size: clamp(30px,4vw,54px); opacity: 1; }
+  .modal-live-link { align-self: flex-start; padding: 12px 18px; border: 1px solid var(--border); border-radius: 8px; color: var(--fg); font-weight: 700; font-size: 14px; }
+  .modal-live-link:hover { background: var(--fg); color: var(--bg); }
+  .modal-live-link[hidden] { display: none; }
+  .modal-img img { object-fit: contain; }
+  @media (max-width: 767px) { .modal-content { overflow-y: auto; } .modal-img { flex: none; min-height: 0; height: auto; aspect-ratio: 3/2; } .modal-body { overflow: visible; padding: 28px; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+    .hero-line span, .hero-avatar, .book-call-wrap, .hero-sub, .reveal { opacity: 1 !important; filter: none !important; transform: none !important; }
+    .hero-avatar { transform: translate(-50%, calc(-50% + 100px)) !important; }
+    .book-call-wrap { transform: translate(-50%, calc(-50% + 280px)) !important; }
+    body, a, button, #projects, .proj-card, .proj-modal, .modal-close, .book-call-btn, .content-layer .book-call-btn { cursor: auto !important; }
+    .cursor-el { display: none; }
+    #projects { height: auto !important; padding: 40px 0 100px; }
+    #projects-sticky { position: relative; height: auto; display: block; }
+    #projects-track { flex-direction: column; width: 100%; transform: none !important; }
+    #projCards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); width: 100%; }
+    .proj-lead { width: 100%; padding: 0; margin-bottom: 28px; }
+    .proj-card { width: 100%; }
+    .proj-end { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) and (max-width: 640px) { .hero-avatar, .book-call-wrap { transform: none !important; } }
+</style>
 </head>
 
 <body class="locked">
@@ -405,11 +434,11 @@
     <div class="hero-name-wrap">
       <h1>
         <span class="hero-line"><span id="heroNameLine1">WORDPRESS</span></span>
-        <span class="hero-line"><span id="heroNameLine2">DEVLOPER</span></span>
+        <span class="hero-line"><span id="heroNameLine2">DEVELOPER</span></span>
       </h1>
     </div>
     <a href="https://wa.me/201063149036" target="_blank" class="hero-avatar" id="heroAvatar" data-view data-cursor="I'm open to work — DM me or book a call">
-      <img src="https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/PORTFOLIO.png?raw=true" alt="Profile" id="avatarImg" decoding="async" fetchpriority="high" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='block';">
+      <img src="assets/profile.webp" alt="Profile" id="avatarImg" decoding="async" fetchpriority="high" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='block';">
       <i class="fa-solid fa-user" id="avatarFallback" style="display:none;"></i>
     </a>
     <div class="book-call-wrap">
@@ -449,7 +478,7 @@
               </svg>
               <div id="ropeCard">
                   <div class="profile-widget" id="profileWidget">
-                    <img id="profileImg" decoding="async" src="https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/PORTFOLIO.png?raw=true" alt="Profile" loading="lazy" onerror="this.remove()">
+                    <img id="profileImg" decoding="async" src="assets/profile.webp" alt="Profile" loading="lazy" onerror="this.remove()">
                     <span id="aw_profile_widget">Abdulrahman<br>Web & AI Automation</span>
                   </div>
               </div>
@@ -552,9 +581,9 @@ My goal is to build sites that are not just visually appealing, but also fast, s
 </main> <!-- END OF CONTENT LAYER -->
 
 <!-- MODAL FOR PROJECTS -->
-<div class="proj-modal" id="projModal">
+<div class="proj-modal" id="projModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true" inert>
     <div class="modal-content">
-        <div class="modal-close" id="modalClose">✕</div>
+        <button type="button" class="modal-close" id="modalClose" aria-label="Close project">✕</button>
         <div class="modal-img"><img id="modalImg" src="" alt="Project Image" decoding="async"></div>
         <div class="modal-body">
             <div>
@@ -563,6 +592,7 @@ My goal is to build sites that are not just visually appealing, but also fast, s
             </div>
             <div class="modal-section"><h4 id="lbl_tech">كيف تم التنفيذ؟ (الأدوات)</h4><p id="modalTech">WordPress, n8n...</p></div>
             <div class="modal-section"><h4 id="lbl_problem">الفكرة / المشكلة التي تم حلها</h4><p id="modalProblem">Description goes here...</p></div>
+            <a id="modalLiveLink" class="modal-live-link" target="_blank" rel="noopener noreferrer" hidden>Visit live website ↗</a>
         </div>
     </div>
 </div>
@@ -583,7 +613,7 @@ My goal is to build sites that are not just visually appealing, but also fast, s
 
   const heroText = {
     ar: { name1: 'مطور', name2: 'وردبريس', subStart: 'بشتغل حاليًا في <strong>تصميم مواقع ووردبريس</strong> وأتمتة سير العمل باستخدام <strong>n8n</strong>، ومتاح للعمل حاليًا.', subEnd: 'مركّز على بناء مواقع سريعة وأتمتة ذكية توفّر الوقت، بشتغل فريلانس عن بُعد.', avatarCursor: 'متاح للعمل — راسلني أو احجز مكالمة', bookCall: 'احجز مكالمة' },
-    en: { name1: 'WORDPRESS', name2: 'DEVLOPER', subStart: 'Currently building <strong>WordPress websites</strong> and automating workflows with <strong>n8n</strong>, available for freelance work.', subEnd: 'Focused on fast websites and smart automations that save time, working remotely as a freelancer.', avatarCursor: "I'm open to work — DM me or book a call", bookCall: 'BOOK A CALL' }
+    en: { name1: 'WORDPRESS', name2: 'DEVELOPER', subStart: 'Currently building <strong>WordPress websites</strong> and automating workflows with <strong>n8n</strong>, available for freelance work.', subEnd: 'Focused on fast websites and smart automations that save time, working remotely as a freelancer.', avatarCursor: "I'm open to work — DM me or book a call", bookCall: 'BOOK A CALL' }
   };
 
   langBtn.addEventListener('click', () => {
@@ -618,49 +648,74 @@ My goal is to build sites that are not just visually appealing, but also fast, s
     setTimeout(() => { preloader.classList.add('slide-down'); hero.classList.add('revealed'); body.classList.remove('locked'); }, t);
     setTimeout(() => { preloader.style.display = 'none'; }, t + 600);
   }
-  window.addEventListener('load', runIntro);
+  document.addEventListener('DOMContentLoaded', runIntro);
 
   const heroSection = document.getElementById('hero');
-  let heroTick = false;
-  window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      if (scrollY > window.innerHeight) { if (heroSection.style.opacity !== '0') heroSection.style.opacity = '0'; return; }
-      if (heroTick) return; heroTick = true;
-      requestAnimationFrame(() => { heroTick = false;
-          const fadePoint = window.innerHeight * 0.85;
-          const p = scrollY / fadePoint;
-          let opacity = 1 - p; if (opacity < 0) opacity = 0;
-          const blur = Math.min(p, 1) * 6;
-          heroSection.style.opacity = opacity;
-          heroSection.style.filter = blur > 0.4 ? `blur(${blur}px)` : 'none';
-      });
-  }, { passive: true });
+  let heroFrame = 0;
+  function updateHero() {
+    heroFrame = 0;
+    const y = window.scrollY;
+    const hidden = y >= window.innerHeight;
+    heroSection.style.opacity = Math.max(0, 1 - y / (window.innerHeight * .85));
+    heroSection.style.visibility = hidden ? 'hidden' : '';
+    heroSection.classList.toggle('offscreen', hidden);
+  }
+  function scheduleHero() { if (!heroFrame) heroFrame = requestAnimationFrame(updateHero); }
+  window.addEventListener('scroll', scheduleHero, { passive: true });
+  window.addEventListener('resize', scheduleHero, { passive: true });
+  scheduleHero();
 
   (function () {
-    if (window.matchMedia('(hover: none)').matches) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const ring = document.getElementById('curRing'); const lbl = document.getElementById('curLbl');
-    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, started = false;
-    let bookCallBounds = null; let bookCallTarget = null;
-    addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; if (!started) { started = true; document.body.classList.add('cur-on'); rx = mx; ry = my; } }, { passive: true });
-    document.addEventListener('mouseleave', () => document.body.classList.remove('cur-on')); document.addEventListener('mouseenter', () => started && document.body.classList.add('cur-on'));
-    (function loop() {
+    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, started = false, frame = 0;
+    let bookCallBounds = null, bookCallTarget = null;
+    function loop() {
+      frame = 0;
+      let tx = mx, ty = my;
       if (bookCallBounds && bookCallTarget) {
-          let cx = bookCallBounds.left + bookCallBounds.width / 2; let cy = bookCallBounds.top + bookCallBounds.height / 2;
-          let pullX = (mx - cx) * 0.25; let pullY = (my - cy) * 0.25;
-          rx += ((cx + pullX) - rx) * 0.4; ry += ((cy + pullY) - ry) * 0.4; bookCallTarget.style.transform = `translate(${pullX}px, ${pullY}px)`;
-      } else { rx += (mx - rx) * .25; ry += (my - ry) * .25; }
-      ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(loop);
-    })();
+        const cx = bookCallBounds.left + bookCallBounds.width / 2, cy = bookCallBounds.top + bookCallBounds.height / 2;
+        const px = (mx - cx) * .25, py = (my - cy) * .25;
+        tx = cx + px; ty = cy + py;
+        bookCallTarget.style.transform = `translate3d(${px}px, ${py}px, 0)`;
+      }
+      rx += (tx - rx) * .35; ry += (ty - ry) * .35;
+      const moving = Math.abs(tx - rx) + Math.abs(ty - ry) > .1;
+      if (!moving) { rx = tx; ry = ty; }
+      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
+      if (moving && !document.hidden) frame = requestAnimationFrame(loop);
+    }
+    function wake() { if (!frame && !document.hidden) frame = requestAnimationFrame(loop); }
+    function releaseButton() {
+      bookCallBounds = null;
+      if (bookCallTarget) bookCallTarget.style.transform = '';
+      bookCallTarget = null; ring.classList.remove('book-call'); lbl.textContent = '';
+    }
+    addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      if (!started) { started = true; rx = mx; ry = my; }
+      document.body.classList.add('cur-on'); wake();
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => { document.body.classList.remove('cur-on'); releaseButton(); });
+    // Scrolling invalidates the magnetic button's cached viewport coordinates.
+    addEventListener('scroll', () => { if (bookCallTarget) { releaseButton(); wake(); } }, { passive: true });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) { cancelAnimationFrame(frame); frame = 0; } });
     document.querySelectorAll('[data-book-call]').forEach(btn => {
-      btn.addEventListener('mouseenter', () => { btn.style.transform = `translate(0, 0)`; bookCallBounds = btn.getBoundingClientRect(); bookCallTarget = btn; ring.classList.add('book-call'); ring.querySelector('.ring-i').style.setProperty('--bw', `${bookCallBounds.width}px`); ring.querySelector('.ring-i').style.setProperty('--bh', `${bookCallBounds.height}px`); lbl.textContent = btn.textContent.trim(); });
-      btn.addEventListener('mouseleave', () => { bookCallBounds = null; if(bookCallTarget) bookCallTarget.style.transform = `translate(0,0)`; bookCallTarget = null; ring.classList.remove('book-call'); lbl.textContent = ''; });
+      btn.addEventListener('mouseenter', () => {
+        btn.style.transform = ''; bookCallBounds = btn.getBoundingClientRect(); bookCallTarget = btn;
+        ring.classList.add('book-call'); ring.classList.remove('view','hover');
+        ring.querySelector('.ring-i').style.setProperty('--bw', `${bookCallBounds.width}px`);
+        ring.querySelector('.ring-i').style.setProperty('--bh', `${bookCallBounds.height}px`);
+        lbl.textContent = btn.textContent.trim(); wake();
+      });
+      btn.addEventListener('mouseleave', () => { releaseButton(); wake(); });
     });
-    document.addEventListener('mouseover', (e) => {
-      if(bookCallBounds) return; 
-      const view = e.target.closest('[data-view]'); const link = e.target.closest('a:not([data-book-call]), button, .interactive'); 
+    document.addEventListener('mouseover', e => {
+      if (bookCallBounds) return;
+      const view = e.target.closest('[data-view]'), link = e.target.closest('a:not([data-book-call]), button, .interactive');
       ring.classList.remove('view', 'hover');
-      if (view) { ring.classList.add('view'); const txt = view.getAttribute('data-cursor'); if (txt) lbl.textContent = txt; } 
-      else if (link) { ring.classList.add('hover'); }
+      if (view) { ring.classList.add('view'); lbl.textContent = view.getAttribute('data-cursor') || ''; }
+      else if (link) ring.classList.add('hover');
     });
   })();
 
@@ -698,22 +753,45 @@ My goal is to build sites that are not just visually appealing, but also fast, s
         document.querySelectorAll('#about .reveal:not(.in)').forEach(el => observer.observe(el));
   
         const rCard = document.getElementById('ropeCard'); const rLine = document.querySelector('.rope-svg line'); const rSvg = document.querySelector('.rope-svg');
-        function updateRopeCenter() { if (rLine && rSvg) { rLine.setAttribute('x1', rSvg.getBoundingClientRect().width / 2); } }
-        window.addEventListener('resize', updateRopeCenter); updateRopeCenter();
+        let ropeCenter = 0, ropeFrame = 0;
+        function updateRopeCenter() {
+          ropeCenter = rSvg ? rSvg.clientWidth / 2 : 0;
+          if (rLine) { rLine.setAttribute('x1', ropeCenter); rLine.setAttribute('x2', ropeCenter); }
+        }
+        updateRopeCenter();
+        if (rSvg) new ResizeObserver(updateRopeCenter).observe(rSvg);
         let rDrag = false, rStartX = 0, rStartY = 0, rCurX = 0, rCurY = 0, rVelX = 0, rVelY = 0;
-        if (rCard && !window.matchMedia('(hover: none)').matches && !rCard.dataset.dragbound) {
-            rCard.dataset.dragbound = true;
-            rCard.addEventListener('mousedown', e => { rDrag = true; rStartX = e.clientX - rCurX; rStartY = e.clientY - rCurY; rCard.style.cursor = 'grabbing'; });
-            window.addEventListener('mousemove', e => { if (!rDrag) return; rCurX = e.clientX - rStartX; rCurY = e.clientY - rStartY; });
-            window.addEventListener('mouseup', () => { rDrag = false; rCard.style.cursor = 'grab'; });
+        if (rCard && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            function wakeRope() { if (!ropeFrame && !document.hidden) ropeFrame = requestAnimationFrame(ropeLoop); }
+            rCard.addEventListener('pointerdown', e => {
+              if (e.button !== 0) return;
+              rDrag = true; rVelX = rVelY = 0; rStartX = e.clientX - rCurX; rStartY = e.clientY - rCurY;
+              rCard.setPointerCapture(e.pointerId); rCard.style.cursor = 'grabbing'; wakeRope();
+            });
+            rCard.addEventListener('pointermove', e => {
+              if (!rDrag) return;
+              rCurX = Math.max(-160, Math.min(160, e.clientX - rStartX));
+              rCurY = Math.max(-80, Math.min(120, e.clientY - rStartY)); wakeRope();
+            });
+            function releaseRope() { rDrag = false; rCard.style.cursor = 'grab'; wakeRope(); }
+            rCard.addEventListener('pointerup', releaseRope); rCard.addEventListener('pointercancel', releaseRope);
             function ropeLoop() {
-                if (!rDrag) { rVelX += (0 - rCurX) * 0.04; rVelY += (0 - rCurY) * 0.04; rVelX *= 0.85; rVelY *= 0.85; rCurX += rVelX; rCurY += rVelY; }
-                let dir = document.documentElement.dir === 'rtl' ? -1 : 1;
-                rCard.style.transform = `translate(${rCurX}px, ${rCurY}px) rotate(${rCurX * 0.05 * dir}deg)`;
-                if (rLine && rSvg) { rLine.setAttribute('x2', rSvg.getBoundingClientRect().width / 2 + rCurX); rLine.setAttribute('y2', 80 + rCurY); }
-                requestAnimationFrame(ropeLoop);
+                ropeFrame = 0;
+                if (!rDrag) {
+                  rVelX = (rVelX - rCurX * .04) * .85; rVelY = (rVelY - rCurY * .04) * .85;
+                  rCurX += rVelX; rCurY += rVelY;
+                }
+                const moving = Math.abs(rCurX) + Math.abs(rCurY) + Math.abs(rVelX) + Math.abs(rVelY) > .1;
+                if (!moving && !rDrag) { rCurX = rCurY = rVelX = rVelY = 0; }
+                const dir = document.documentElement.dir === 'rtl' ? -1 : 1;
+                rCard.style.transform = `translate3d(${rCurX}px, ${rCurY}px, 0) rotate(${rCurX * .05 * dir}deg)`;
+                if (rLine) { rLine.setAttribute('x2', ropeCenter + rCurX); rLine.setAttribute('y2', 80 + rCurY); }
+                if (!rDrag && moving) wakeRope();
             }
-            ropeLoop();
+            document.addEventListener('visibilitychange', () => {
+              if (document.hidden) { cancelAnimationFrame(ropeFrame); ropeFrame = 0; rDrag = false; }
+              else if (rCurX || rCurY) wakeRope();
+            });
         }
     }
     document.addEventListener("DOMContentLoaded", initContentLayer);
@@ -742,20 +820,23 @@ My goal is to build sites that are not just visually appealing, but also fast, s
   /* ══════════ PROJECTS ══════════ */
   (function() {
     const projectsData = [
-      { id: 'p1', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/mk%20mokeup.jpeg?raw=true', c1:'#4a4a4a', c2:'#1c1c1c', ic:'MK', ar: { cat:'تصميم مواقع', year:'2026', title:'مطابخ My Kitchen', tech:'WordPress / WooCommerce', problem:'العميل كان يحتاج إلى معرض تفاعلي لعرض تصميمات المطابخ، مع نظام لطلب التسعير وحجز المواعيد بسهولة.' }, en: { cat:'Web Design', year:'2026', title:'My Kitchen Store', tech:'WordPress / WooCommerce', problem:'The client needed an interactive gallery to showcase kitchen designs, with a seamless booking and quoting system.' } },
-      { id: 'p2', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/moke%20up%205.png?raw=true', c1:'#4d4560', c2:'#1c1a26', ic:'AT', ar: { cat:'متجر إلكتروني', year:'2026', title:'أليكس تريدينج', tech:'WooCommerce / Payment Gateways', problem:'تحويل تجارة أدوات الخياطة من البيع التقليدي إلى متجر إلكتروني متكامل يدعم الدفع الإلكتروني وإدارة المخزون.' }, en: { cat:'eCommerce', year:'2026', title:'Alex Trading', tech:'WooCommerce / Payment Gateways', problem:'Transforming a traditional sewing tools business into a fully automated eCommerce store.' } },
-      { id: 'p3', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/moke%20up%208.png?raw=true', c1:'#4a4a4a', c2:'#1c1c1c', ic:'CN', ar: { cat:'موقع شركة', year:'2026', title:'كريجير CNC', tech:'WordPress / Elementor', problem:'تصميم موقع احترافي لشركة ماكينات CNC يعرض الماكينات والمواصفات التقنية لجذب عملاء B2B.' }, en: { cat:'Corporate', year:'2026', title:'Creager CNC', tech:'WordPress / Elementor', problem:'Designing a professional website for a CNC machinery company to showcase technical specs.' } },
-      { id: 'p4', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/moke%20up%207.png?raw=true', c1:'#5a3d3d', c2:'#241717', ic:'TH', ar: { cat:'موقع إخباري', year:'2026', title:'موقع ثورة', tech:'WordPress / Optimization', problem:'بناء بوابة إخبارية سريعة جداً تتحمل الزيارات العالية مع لوحة تحكم سهلة للصحفيين.' }, en: { cat:'News Portal', year:'2026', title:'Thawra News', tech:'WordPress / Optimization', problem:'Building a lightning-fast news portal capable of handling high traffic.' } },
-      { id: 'p5', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/moke%20up%206.png?raw=true', c1:'#3d5250', c2:'#182120', ic:'FK', ar: { cat:'بورتفوليو', year:'2025', title:'فكرة للتصميم', tech:'WordPress / Animations', problem:'وكالة جرافيك تحتاج موقع يعكس هويتها الإبداعية ويعرض سابقة أعمالها بطريقة جذابة للعملاء.' }, en: { cat:'Portfolio', year:'2025', title:'Fikra Graphics', tech:'WordPress / Animations', problem:'A graphic agency needing a creative website to reflect their identity.' } },
-      { id: 'p6', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/MOKE%20UP.png?raw=true', c1:'#4a4a4a', c2:'#1c1c1c', ic:'WA', ar: { cat:'موقع مقاولات', year:'2026', title:'واجهة للأسقف', tech:'WordPress / Lead Gen', problem:'إنشاء هوية رقمية لشركة تركيب أسقف لجلب عملاء محتملين من خلال نماذج طلب معاينة.' }, en: { cat:'Contracting', year:'2026', title:'Wajeha Ceilings', tech:'WordPress / Lead Gen', problem:'Creating a digital presence for a ceiling installation company to generate leads.' } },
-      { id: 'p7', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/moke%20up%204.png?raw=true', c1:'#5c4a34', c2:'#241d14', ic:'FR', ar: { cat:'متجر أثاث', year:'2026', title:'متجر الأثاث العصري', tech:'WooCommerce', problem:'متجر إلكتروني لبيع الأثاث يتميز بتصفح سريع، فلاتر بحث متقدمة، وتجربة مستخدم ممتازة.' }, en: { cat:'eCommerce', year:'2026', title:'Modern Furniture', tech:'WooCommerce', problem:'An eCommerce store for furniture featuring fast browsing and advanced search filters.' } },
-      { id: 'p8', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/Screenshot%202026-04-28%20125325.png?raw=true', c1:'#345c46', c2:'#14241c', ic:'DY', ar: { cat:'أتمتة وسائط', year:'2026', title:'Drive to YouTube Pipeline', tech:'n8n / Google Drive / YouTube', problem:'أتمتة كاملة لعملية استخراج الفيديوهات والصور المصغرة من درايف ورفعها على يوتيوب بنظام جدولة ذكي.' }, en: { cat:'Media Pipeline', year:'2026', title:'Drive to YouTube Pipeline', tech:'n8n / Google Drive / YouTube', problem:'Fully automating video and thumbnail extraction from Drive and publishing them to YouTube with smart scheduling.' } },
-      { id: 'p9', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/Screenshot%202026-04-29%20230038.png?raw=true', c1:'#3d4a5c', c2:'#181d24', ic:'BS', ar: { cat:'أنظمة ومزامنة', year:'2026', title:'Bitrix24 & Email Automation', tech:'n8n / JavaScript / Gmail', problem:'ربط منصة Bitrix24 بالبنوك البريدية وإدارة الردود التلقائية وفحوصات الشروط البرمجية بدقة.' }, en: { cat:'CRM Automation', year:'2026', title:'Bitrix24 & Email Automation', tech:'n8n / JavaScript / Gmail', problem:'Integrating Bitrix24 with email systems, managing automated replies and conditional JavaScript logic.' } },
-      { id: 'p10', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/image.png?raw=true', c1:'#345c46', c2:'#14241c', ic:'WA', ar: { cat:'ذكاء اصطناعي', year:'2026', title:'WhatsApp Smart Agent', tech:'n8n / OpenAI / WhatsApp', problem:'مساعد ذكي متكامل للرد على رسائل واتساب وتحليل المحتوى الصوتي والمرئي للعملاء.' }, en: { cat:'AI Agent', year:'2026', title:'WhatsApp Smart Agent', tech:'n8n / OpenAI / WhatsApp', problem:'An integrated smart assistant answering WhatsApp messages and analyzing user media.' } },
-      { id: 'p11', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/WEBSITE_2.jpg?raw=true', c1:'#1f4a66', c2:'#0e1f2b', ic:'JZ',
+      { id: 'summvia', img: 'assets/summvia-mockup.webp', url: 'https://summvia-vert.vercel.app/', c1:'#343434', c2:'#0a0a0a', ic:'SV',
+        ar: { cat:'موقع وكالة رقمية', year:'2026', title:'SUMMVIA', tech:'WordPress / Elementor / Custom CSS & JavaScript', problem:'تصميم وتطوير موقع SUMMVIA لعرض خدمات تصميم المواقع والداشبورد والأتمتة بالذكاء الاصطناعي. هوية بالأسود والأبيض، وروبوت ثلاثي الأبعاد يتفاعل مع حركة المؤشر، ومعرض أعمال بفلاتر لمشاريع الويب ومسارات n8n، ونموذج استشارة يجمع احتياجات الشركة. متجاوب على الموبايل والديسكتوب، مع نسخة مستقلة منشورة على Vercel.' },
+        en: { cat:'Digital Agency', year:'2026', title:'SUMMVIA', tech:'WordPress / Elementor / Custom CSS & JavaScript', problem:'Designed and developed SUMMVIA’s website to present its web development, dashboard and AI automation services. A black-and-white identity, cursor-responsive 3D assistant, filterable portfolio of websites and n8n workflows, and a consultation form help visitors understand the services and share their requirements. Responsive across desktop and mobile, with an independent version deployed on Vercel.' } },
+      { id: 'p1', img: 'assets/project-02.webp', c1:'#4a4a4a', c2:'#1c1c1c', ic:'MK', ar: { cat:'تصميم مواقع', year:'2026', title:'مطابخ My Kitchen', tech:'WordPress / WooCommerce', problem:'العميل كان يحتاج إلى معرض تفاعلي لعرض تصميمات المطابخ، مع نظام لطلب التسعير وحجز المواعيد بسهولة.' }, en: { cat:'Web Design', year:'2026', title:'My Kitchen Store', tech:'WordPress / WooCommerce', problem:'The client needed an interactive gallery to showcase kitchen designs, with a seamless booking and quoting system.' } },
+      { id: 'p2', img: 'assets/project-04.webp', c1:'#4d4560', c2:'#1c1a26', ic:'AT', ar: { cat:'متجر إلكتروني', year:'2026', title:'أليكس تريدينج', tech:'WooCommerce / Payment Gateways', problem:'تحويل تجارة أدوات الخياطة من البيع التقليدي إلى متجر إلكتروني متكامل يدعم الدفع الإلكتروني وإدارة المخزون.' }, en: { cat:'eCommerce', year:'2026', title:'Alex Trading', tech:'WooCommerce / Payment Gateways', problem:'Transforming a traditional sewing tools business into a fully automated eCommerce store.' } },
+      { id: 'p3', img: 'assets/project-07.webp', c1:'#4a4a4a', c2:'#1c1c1c', ic:'CN', ar: { cat:'موقع شركة', year:'2026', title:'كريجير CNC', tech:'WordPress / Elementor', problem:'تصميم موقع احترافي لشركة ماكينات CNC يعرض الماكينات والمواصفات التقنية لجذب عملاء B2B.' }, en: { cat:'Corporate', year:'2026', title:'Creager CNC', tech:'WordPress / Elementor', problem:'Designing a professional website for a CNC machinery company to showcase technical specs.' } },
+      { id: 'p4', img: 'assets/project-06.webp', c1:'#5a3d3d', c2:'#241717', ic:'TH', ar: { cat:'موقع إخباري', year:'2026', title:'موقع ثورة', tech:'WordPress / Optimization', problem:'بناء بوابة إخبارية سريعة جداً تتحمل الزيارات العالية مع لوحة تحكم سهلة للصحفيين.' }, en: { cat:'News Portal', year:'2026', title:'Thawra News', tech:'WordPress / Optimization', problem:'Building a lightning-fast news portal capable of handling high traffic.' } },
+      { id: 'p5', img: 'assets/project-05.webp', c1:'#3d5250', c2:'#182120', ic:'FK', ar: { cat:'بورتفوليو', year:'2025', title:'فكرة للتصميم', tech:'WordPress / Animations', problem:'وكالة جرافيك تحتاج موقع يعكس هويتها الإبداعية ويعرض سابقة أعمالها بطريقة جذابة للعملاء.' }, en: { cat:'Portfolio', year:'2025', title:'Fikra Graphics', tech:'WordPress / Animations', problem:'A graphic agency needing a creative website to reflect their identity.' } },
+      { id: 'p6', img: 'assets/project-08.webp', c1:'#4a4a4a', c2:'#1c1c1c', ic:'WA', ar: { cat:'موقع مقاولات', year:'2026', title:'واجهة للأسقف', tech:'WordPress / Lead Gen', problem:'إنشاء هوية رقمية لشركة تركيب أسقف لجلب عملاء محتملين من خلال نماذج طلب معاينة.' }, en: { cat:'Contracting', year:'2026', title:'Wajeha Ceilings', tech:'WordPress / Lead Gen', problem:'Creating a digital presence for a ceiling installation company to generate leads.' } },
+      { id: 'p7', img: 'assets/project-03.webp', c1:'#5c4a34', c2:'#241d14', ic:'FR', ar: { cat:'متجر أثاث', year:'2026', title:'متجر الأثاث العصري', tech:'WooCommerce', problem:'متجر إلكتروني لبيع الأثاث يتميز بتصفح سريع، فلاتر بحث متقدمة، وتجربة مستخدم ممتازة.' }, en: { cat:'eCommerce', year:'2026', title:'Modern Furniture', tech:'WooCommerce', problem:'An eCommerce store for furniture featuring fast browsing and advanced search filters.' } },
+      { id: 'p8', img: 'assets/project-10.webp', c1:'#345c46', c2:'#14241c', ic:'DY', ar: { cat:'أتمتة وسائط', year:'2026', title:'Drive to YouTube Pipeline', tech:'n8n / Google Drive / YouTube', problem:'أتمتة كاملة لعملية استخراج الفيديوهات والصور المصغرة من درايف ورفعها على يوتيوب بنظام جدولة ذكي.' }, en: { cat:'Media Pipeline', year:'2026', title:'Drive to YouTube Pipeline', tech:'n8n / Google Drive / YouTube', problem:'Fully automating video and thumbnail extraction from Drive and publishing them to YouTube with smart scheduling.' } },
+      { id: 'p9', img: 'assets/project-11.webp', c1:'#3d4a5c', c2:'#181d24', ic:'BS', ar: { cat:'أنظمة ومزامنة', year:'2026', title:'Bitrix24 & Email Automation', tech:'n8n / JavaScript / Gmail', problem:'ربط منصة Bitrix24 بالبنوك البريدية وإدارة الردود التلقائية وفحوصات الشروط البرمجية بدقة.' }, en: { cat:'CRM Automation', year:'2026', title:'Bitrix24 & Email Automation', tech:'n8n / JavaScript / Gmail', problem:'Integrating Bitrix24 with email systems, managing automated replies and conditional JavaScript logic.' } },
+      { id: 'p10', img: 'assets/project-01.webp', c1:'#345c46', c2:'#14241c', ic:'WA', ar: { cat:'ذكاء اصطناعي', year:'2026', title:'WhatsApp Smart Agent', tech:'n8n / OpenAI / WhatsApp', problem:'مساعد ذكي متكامل للرد على رسائل واتساب وتحليل المحتوى الصوتي والمرئي للعملاء.' }, en: { cat:'AI Agent', year:'2026', title:'WhatsApp Smart Agent', tech:'n8n / OpenAI / WhatsApp', problem:'An integrated smart assistant answering WhatsApp messages and analyzing user media.' } },
+      { id: 'p11', img: 'assets/project-13.webp', c1:'#1f4a66', c2:'#0e1f2b', ic:'JZ',
         ar: { cat:'شحن وتوصيل', year:'2026', title:'جوزي للشحن والتوصيل', tech:'WordPress / WooCommerce / Responsive Design', problem:'موقع لشركة شحن وتوصيل بيعرض خدمات التوصيل في نفس اليوم والشحن الدولي، مع متجر إلكتروني مدمج وزرار حجز توصيل واضح. التصميم متجاوب بالكامل على الموبايل والتابلت واللاب.' },
         en: { cat:'Logistics', year:'2026', title:'Juzi Delivery', tech:'WordPress / WooCommerce / Responsive Design', problem:'A website for a delivery company showcasing same-day delivery and worldwide shipping, with a built-in webshop and a clear "Book Delivery" call to action. Fully responsive across mobile, tablet and desktop.' } },
-      { id: 'p12', img: 'https://github.com/AbdulrhmanMohameed/abdulrhman-portfolio/blob/main/wp-content/WEBSITE_1.jpg?raw=true', c1:'#7a1f4d', c2:'#1f1030', ic:'IU',
+      { id: 'p12', img: 'assets/project-12.webp', c1:'#7a1f4d', c2:'#1f1030', ic:'IU',
         ar: { cat:'صفحة هبوط', year:'2026', title:'Into the Unseen', tech:'WordPress / Custom CSS / Animations', problem:'صفحة هبوط إبداعية بتعتمد على هيرو سينمائي بخلفية القمر الوردي، وعناوين كبيرة وروابط سوشيال، ومتجاوبة مع كل الشاشات لتجربة بصرية قوية من أول نظرة.' },
         en: { cat:'Landing Page', year:'2026', title:'Into the Unseen', tech:'WordPress / Custom CSS / Animations', problem:'A creative landing page built around a cinematic hero with a glowing pink moon, bold typography and social links, fully responsive for a striking first impression.' } }
     ];
@@ -763,7 +844,7 @@ My goal is to build sites that are not just visually appealing, but also fast, s
         ar: { eyebrow: 'الأعمال', intro: 'مجموعة من أفضل متاجر الووردبريس ومشاريع أتمتة الـ n8n والذكاء الاصطناعي.', scroll: 'استمر في السكرول', end: 'النهاية', btnMore: 'عرض المزيد ↓', btnLess: 'عرض أقل ↑', lblTech: 'كيف تم التنفيذ؟ (الأدوات)', lblProblem: 'الفكرة / المشكلة التي تم حلها' },
         en: { eyebrow: 'PROJECTS', intro: 'A collection of top-tier WordPress stores and AI/n8n automation projects.', scroll: 'Scroll to explore', end: 'END', btnMore: 'EXPLORE MORE ↓', btnLess: 'SHOW LESS ↑', lblTech: 'How it was built (Tech Stack)', lblProblem: 'The Challenge & Solution' }
     };
-    let isExpanded = false; let currentLang = 'ar'; let wrapper, sticky, track; let targetProjX = 0, currentProjX = 0, rafStarted = false;
+    let isExpanded = false; let currentLang = 'ar'; let wrapper, sticky, track; let projectFrame = 0, measureFrame = 0, projectTop = 0, projectDistance = 0, desktopProjects = false;
     function updateProjectsLanguage() {
         const isAr = document.documentElement.lang.startsWith('ar') || document.documentElement.dir === 'rtl'; currentLang = isAr ? 'ar' : 'en'; const t = staticTexts[currentLang];
         document.getElementById('p_eyebrow').textContent = t.eyebrow; document.getElementById('p_intro').textContent = t.intro; document.getElementById('p_scroll').textContent = t.scroll; document.getElementById('p_end').textContent = t.end; document.getElementById('exploreBtnText').textContent = isExpanded ? t.btnLess : t.btnMore; document.getElementById('lbl_tech').textContent = t.lblTech; document.getElementById('lbl_problem').textContent = t.lblProblem;
@@ -774,11 +855,11 @@ My goal is to build sites that are not just visually appealing, but also fast, s
       const itemsToShow = isExpanded ? projectsData : projectsData.slice(0, 5);
       el.innerHTML = itemsToShow.map((p, i) => {
         const data = p[currentLang];
-        return `<article class="proj-card" data-id="${p.id}" style="--tc1:${p.c1};--tc2:${p.c2}"><div class="bgimg"><img data-idx="${i}" src="${p.img}" alt="${data.title}" loading="lazy" decoding="async"></div><div class="fallback" id="fallback-${i}"><div class="fic">${p.ic}</div><span>${data.title}</span></div><div class="play"><span>+</span></div><div class="meta-top"><span>${data.cat}</span><span>${data.year}</span></div><h3 class="ptitle disp">${data.title}</h3><span class="dur">● ${data.tech.split('/')[0].trim()}</span></article>`
+        return `<article class="proj-card" tabindex="0" role="button" aria-haspopup="dialog" aria-label="${data.title}" data-id="${p.id}" style="--tc1:${p.c1};--tc2:${p.c2}"><div class="bgimg"><img data-idx="${i}" src="${p.img}" alt="${data.title}" loading="lazy" decoding="async"></div><div class="fallback" id="fallback-${i}"><div class="fic">${p.ic}</div><span>${data.title}</span></div><div class="play"><span>+</span></div><div class="meta-top"><span>${data.cat}</span><span>${data.year}</span></div><h3 class="ptitle disp">${data.title}</h3><span class="dur">● ${data.tech.split('/')[0].trim()}</span></article>`
       }).join('');
       el.querySelectorAll('img[data-idx]').forEach(img => { const idx = img.getAttribute('data-idx'); img.addEventListener('load', () => img.classList.add('loaded')); img.addEventListener('error', () => { img.style.display = 'none'; const fb = document.getElementById('fallback-' + idx); if (fb) fb.classList.add('show'); }); if (img.complete && img.naturalWidth > 0) img.classList.add('loaded'); });
-      el.querySelectorAll('.proj-card').forEach(card => { card.addEventListener('click', () => openModal(card.getAttribute('data-id'))); });
-      setTimeout(updateProjHeight, 150);
+      el.querySelectorAll('.proj-card').forEach(card => { card.addEventListener('click', () => openModal(card.getAttribute('data-id'))); card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.getAttribute('data-id')); } }); });
+      scheduleProjectMeasure();
     }
     const exploreBtn = document.getElementById('exploreBtn');
     if(exploreBtn) {
@@ -788,41 +869,73 @@ My goal is to build sites that are not just visually appealing, but also fast, s
             renderProjectsCards();
         });
     }
-    const modal = document.getElementById('projModal'); const modalClose = document.getElementById('modalClose');
-    function openModal(id) { const project = projectsData.find(p => p.id === id); if(!project) return; const data = project[currentLang]; document.getElementById('modalImg').src = project.img; document.getElementById('modalCat').textContent = data.cat; document.getElementById('modalTitle').textContent = data.title; document.getElementById('modalTech').textContent = data.tech; document.getElementById('modalProblem').textContent = data.problem; modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
-    modalClose.addEventListener('click', closeModal); modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
-    function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
-    
-    document.addEventListener("DOMContentLoaded", () => { updateProjectsLanguage(); initHorizontalScroll(); });
-    if(langBtn) { langBtn.addEventListener('click', () => { setTimeout(updateProjectsLanguage, 50); }); }
+    const modal = document.getElementById('projModal'), modalClose = document.getElementById('modalClose');
+    const liveLink = document.getElementById('modalLiveLink');
+    let returnFocus = null;
+    function openModal(id) {
+      const project = projectsData.find(p => p.id === id); if (!project) return;
+      const data = project[currentLang]; returnFocus = document.activeElement;
+      document.getElementById('modalImg').src = project.img; document.getElementById('modalImg').alt = data.title;
+      document.getElementById('modalCat').textContent = data.cat; document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalTech').textContent = data.tech; document.getElementById('modalProblem').textContent = data.problem;
+      liveLink.hidden = !project.url;
+      if (project.url) { liveLink.href = project.url; liveLink.textContent = currentLang === 'ar' ? 'شاهد الموقع مباشرة ↗' : 'Visit live website ↗'; }
+      else liveLink.removeAttribute('href');
+      modal.inert = false; modal.setAttribute('aria-hidden','false'); modal.classList.add('active');
+      document.body.classList.add('modal-open'); modalClose.focus({ preventScroll: true });
+    }
+    function closeModal() {
+      modal.classList.remove('active'); modal.inert = true; modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('modal-open'); returnFocus?.focus({ preventScroll: true });
+    }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    modal.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key !== 'Tab') return;
+      const last = liveLink.hidden ? modalClose : liveLink;
+      if (e.shiftKey && document.activeElement === modalClose) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); modalClose.focus(); }
+    });
 
+    document.addEventListener('DOMContentLoaded', () => { updateProjectsLanguage(); initHorizontalScroll(); });
+    if (langBtn) langBtn.addEventListener('click', () => { setTimeout(updateProjectsLanguage, 50); });
+
+    // CSS owns pinning. Only the track transform changes while scrolling;
+    // all layout measurements run after a resize or content change.
+    function drawProjects() {
+      projectFrame = 0;
+      if (!track) return;
+      const progress = desktopProjects ? Math.max(0, Math.min(projectDistance, window.scrollY - projectTop)) : 0;
+      const direction = document.documentElement.dir === 'rtl' ? 1 : -1;
+      track.style.transform = `translate3d(${direction * progress}px, 0, 0)`;
+    }
+    function scheduleProjectDraw() { if (!projectFrame) projectFrame = requestAnimationFrame(drawProjects); }
+    function scheduleProjectMeasure() {
+      if (!measureFrame) measureFrame = requestAnimationFrame(updateProjHeight);
+    }
     function updateProjHeight() {
-        if(!wrapper || !sticky || !track) return;
-        if (window.innerWidth < 900) { wrapper.style.height = 'auto'; sticky.style.height = 'auto'; track.style.transform = 'none'; sticky.classList.remove('is-fixed','is-abs-bottom'); return; }
-        sticky.style.height = '100vh'; const trackWidth = track.scrollWidth; const viewportWidth = window.innerWidth; const scrollAmount = Math.max(trackWidth - viewportWidth, 0); wrapper.style.height = (scrollAmount + window.innerHeight) + 'px';
+      measureFrame = 0;
+      if (!wrapper || !track) return;
+      desktopProjects = window.matchMedia('(min-width: 901px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const viewportH = window.innerHeight;
+      projectTop = wrapper.getBoundingClientRect().top + window.scrollY;
+      projectDistance = desktopProjects ? Math.max(0, track.scrollWidth - document.documentElement.clientWidth) : 0;
+      const height = desktopProjects ? `${projectDistance + viewportH}px` : 'auto';
+      if (wrapper.style.height !== height) wrapper.style.height = height;
+      scheduleProjectDraw();
     }
     function initHorizontalScroll() {
       wrapper = document.getElementById('projects'); sticky = document.getElementById('projects-sticky'); track = document.getElementById('projects-track');
-      if (!wrapper || !sticky || !track) return;
-      updateProjHeight(); window.addEventListener('load', updateProjHeight);
-      window.addEventListener('resize', () => { updateProjHeight(); onScroll(); });
-      function onScroll() {
-          if (window.innerWidth < 900) return;
-          const wrapRect = wrapper.getBoundingClientRect(); const viewportH = window.innerHeight; const wrapperHeight = wrapper.offsetHeight;
-          if (wrapRect.top > 0) { sticky.classList.remove('is-fixed', 'is-abs-bottom'); sticky.style.position = 'relative'; sticky.style.top = '0'; sticky.style.left = ''; sticky.style.width = ''; } 
-          else if (wrapRect.bottom <= viewportH) { sticky.classList.remove('is-fixed'); sticky.classList.add('is-abs-bottom'); sticky.style.position = 'absolute'; sticky.style.top = 'auto'; sticky.style.left = ''; sticky.style.width = ''; } 
-          else { sticky.classList.add('is-fixed'); sticky.classList.remove('is-abs-bottom'); sticky.style.position = 'fixed'; sticky.style.top = '0'; sticky.style.left = '0'; sticky.style.width = '100%'; }
-          let scrollProgress = -wrapRect.top; const maxScroll = wrapperHeight - viewportH; if (scrollProgress < 0) scrollProgress = 0; if (scrollProgress > maxScroll) scrollProgress = maxScroll; targetProjX = scrollProgress;
-      }
-      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-      if (!rafStarted) { rafStarted = true; renderProjLoop(); }
-    }
-    function renderProjLoop() {
-      if (track && window.innerWidth >= 900) {
-          const diff = targetProjX - currentProjX;
-          if (Math.abs(diff) > 0.1) { currentProjX += diff * 0.08; const dir = document.documentElement.dir === 'rtl' ? 1 : -1; track.style.transform = `translate3d(${dir * currentProjX}px, 0, 0)`; }
-      }
-      requestAnimationFrame(renderProjLoop);
+      if (!wrapper || !track) return;
+      window.addEventListener('scroll', scheduleProjectDraw, { passive: true });
+      window.addEventListener('resize', scheduleProjectMeasure, { passive: true });
+      window.addEventListener('load', scheduleProjectMeasure);
+      const layoutObserver = new ResizeObserver(scheduleProjectMeasure);
+      [track, document.getElementById('about'), document.getElementById('stack'), document.querySelector('.marquee-widget')].filter(Boolean).forEach(el => layoutObserver.observe(el));
+      document.fonts?.ready.then(scheduleProjectMeasure);
+      window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', scheduleProjectMeasure);
+      scheduleProjectMeasure();
     }
   })();
 
@@ -850,11 +963,19 @@ My goal is to build sites that are not just visually appealing, but also fast, s
     function updateActive(){ var idx=getActiveIndex(); dotEls.forEach(function(d,i){ d.classList.toggle("active", i===idx); }); }
     function goTo(i){ if(i<0) i=0; if(i>cardEls.length-1) i=cardEls.length-1; var offset = (cardEls[i].getBoundingClientRect().left + cardEls[i].getBoundingClientRect().width/2) - (track.getBoundingClientRect().left + track.getBoundingClientRect().width/2); track.scrollBy({left: offset, behavior:"smooth"}); }
     function next(){ goTo(getActiveIndex()+1); } function prev(){ goTo(getActiveIndex()-1); }
-    function restartAutoplay(){ if(autoTimer) clearInterval(autoTimer); autoTimer = setInterval(function(){ var idx=getActiveIndex(); goTo(idx+1 >= cardEls.length ? 0 : idx+1); }, 5000); }
+    var testimonialsVisible = false;
+    function restartAutoplay(){
+      pauseAutoplay();
+      if (!testimonialsVisible || document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches || track.matches(':hover') || track.contains(document.activeElement)) return;
+      autoTimer = setInterval(function(){ var idx=getActiveIndex(); goTo(idx+1 >= cardEls.length ? 0 : idx+1); }, 5000);
+    }
     function pauseAutoplay(){ if(autoTimer){ clearInterval(autoTimer); autoTimer=null; } }
     if(prevBtn) prevBtn.addEventListener("click", function(){ prev(); restartAutoplay(); }); if(nextBtn) nextBtn.addEventListener("click", function(){ next(); restartAutoplay(); });
     track.addEventListener("pointerdown", pauseAutoplay, {passive:true}); track.addEventListener("touchstart", pauseAutoplay, {passive:true}); track.addEventListener("mouseenter", pauseAutoplay); track.addEventListener("mouseleave", restartAutoplay);
     var scrollTicking=false; track.addEventListener("scroll", function(){ if(!scrollTicking){ scrollTicking=true; requestAnimationFrame(function(){ updateActive(); scrollTicking=false; }); } }, {passive:true});
+    new IntersectionObserver(function(entries){ testimonialsVisible = entries[0].isIntersecting; restartAutoplay(); }, {threshold: .1}).observe(document.querySelector('.tst-section'));
+    document.addEventListener('visibilitychange', restartAutoplay);
+    track.addEventListener('focusin', pauseAutoplay); track.addEventListener('focusout', restartAutoplay);
     document.addEventListener("DOMContentLoaded", render);
     if(langBtn){ langBtn.addEventListener("click", function(){ setTimeout(render, 50); }); }
   })();
@@ -876,6 +997,11 @@ My goal is to build sites that are not just visually appealing, but also fast, s
     document.addEventListener("DOMContentLoaded", initContactSection);
     if (langBtn) { langBtn.addEventListener('click', () => { setTimeout(updateContactLanguage, 50); }); }
   })();
+  // Stop decorative marquees while they are outside the viewport.
+  const marqueeVisibility = new IntersectionObserver(entries => {
+    entries.forEach(entry => entry.target.classList.toggle('motion-paused', !entry.isIntersecting));
+  });
+  document.querySelectorAll('.marquee-widget').forEach(el => marqueeVisibility.observe(el));
 </script>
 
 </body>
